@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+
+    nginx:
+        restart: always
+        image: nginx:latest
+        ports:
+            - 80:80
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf:ro
+            - ./wirecloud-static:/var/www/static:ro
+        depends_on:
+            - wirecloud
+
+
+    wirecloud:
+        restart: always
+        image: fiware/wirecloud:1.2
+        # If you want to use a user from the host, provide here the id of the
+        # user, e.g. `export WIRECLOUD_USER=$(id -u username)`
+        user: ${WIRECLOUD_USER:-0}
+        environment:
+            - DEBUG=False
+            - FORWARDED_ALLOW_IPS=*
+        volumes:
+            - ./wirecloud-data:/opt/wirecloud_instance/data
+            - ./wirecloud-static:/var/www/static
