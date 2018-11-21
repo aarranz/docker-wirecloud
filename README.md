@@ -30,6 +30,8 @@ The following environment variables are also honored for configuring your WireCl
 - `-e ALLOWED_HOSTS=...` (defaults to "*", whitespace whitespace-separated list
     of allowed hosts. See [django documentation][ALLOWED_HOSTS] for more
     details)
+- `-e DATA_UPLOAD_MAX_MEMORY_SIZE=...` (defaults to "262144000", max memory size
+    in bytes for data uploads. Provide an empty value for disabling size limits)
 - `-e DEFAULT_THEME=...` (defaults to "wirecloud.defaulttheme")
 - `-e DB_HOST=...` (defaults to nothing, provide a host value to connect this
     image with a DB server)
@@ -184,7 +186,7 @@ http {
 
         listen 80;
         server_name example.org;
-        client_max_body_size 20M;
+        client_max_body_size 25M;
         charset utf-8;
 
         location /static {

@@ -192,4 +192,5 @@ else:
         'django.contrib.auth.backends.ModelBackend',
     )
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = 262144000
+max_upload_size = os.environ.get("DATA_UPLOAD_MAX_MEMORY_SIZE", "262144000").strip()
+DATA_UPLOAD_MAX_MEMORY_SIZE = None if max_upload_size == "" else int(max_upload_size)

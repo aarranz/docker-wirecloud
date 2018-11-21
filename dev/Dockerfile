@@ -5,6 +5,7 @@ MAINTAINER WireCloud Team <wirecloud@conwet.com>
 ENV DEFAULT_THEME=wirecloud.defaulttheme
 ENV FORWARDED_ALLOW_IPS=*
 ENV DB_PORT=5432
+ENV DATA_UPLOAD_MAX_MEMORY_SIZE=262144000
 
 RUN apt-get update && \
     apt-get install -y libmemcached-dev && \

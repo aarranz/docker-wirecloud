@@ -52,6 +52,7 @@ services:
             - FORWARDED_ALLOW_IPS=*
             - ELASTICSEARCH2_URL=http://elasticsearch:9200/
             - MEMCACHED_LOCATION=memcached:11211
+            - DATA_UPLOAD_MAX_MEMORY_SIZE=262144000
             # Uncomment the following environment variables to enable IDM integration
             #- FIWARE_IDM_SERVER=${FIWARE_IDM_SERVER}
             #- SOCIAL_AUTH_FIWARE_KEY=${SOCIAL_AUTH_FIWARE_KEY}
